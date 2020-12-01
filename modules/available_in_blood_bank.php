@@ -1,14 +1,13 @@
 <?php
 
-    ###########################################################################################
-    #                                                                                         #
-    #        This module is used to display all the available units in each blood group       #
-    #        with in the blood bank                                                           #
-    #                                                                                         #
-    ###########################################################################################
-    
+    /*
 
-    $hospital_id = get_hospital_id();
+        This module is used to display all the available units in each blood group       
+         with in the blood bank   
+    
+    */
+
+    $hospital_id = get_hospital_id(); # Returns hospital id of current user
 ?>
 
 <table class="table" id="blood-qnt">
@@ -24,7 +23,7 @@
     </tr>
     <tr>
         <!-- Getting the count of each blood group from all the hospitals -->
-        <th><?php echo get_available_qnt($conn,"A+",$hospital_id)?></th>
+        <th><?php echo get_available_qnt($conn,"A+",$hospital_id) # Returns available quantity in each group?></th>
         <th><?php echo get_available_qnt($conn,"A-",$hospital_id)?></th>
         <th><?php echo get_available_qnt($conn,"B+",$hospital_id)?></th>
         <th><?php echo get_available_qnt($conn,"B-",$hospital_id)?></th>

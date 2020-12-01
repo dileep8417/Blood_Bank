@@ -1,12 +1,13 @@
 <?php
 
-    ###############################################################################################
-    #                                                                                             # 
-    #     This file is to show the blood availability in the blood bank to the hospital user and  #
-    #     allows to update the blood quantity information                                         #
-    #                                                                                             #
-    ###############################################################################################
+    /*    
+
+         This file is to show the blood availability in the blood bank to the hospital user and  
+         allows to update the blood quantity information                                         
     
+         
+    */
+
     
     require "../config/connection.php";     # To establish database connection
     require "../operations.php";            # To access funtion for handling database and sessions

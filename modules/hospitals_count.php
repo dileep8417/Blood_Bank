@@ -1,10 +1,11 @@
 <?php
 
-    ########################################################################################
-    #                                                                                      #
-    #          This module is to display the hospitals,bloood units,receivers count        #
-    #                                                                                      #
-    ########################################################################################
+    /*
+    
+        This module is to display the hospitals,bloood units,receivers count  
+    
+    */                                                                                           
+                                                                                          
 
 ?>
 

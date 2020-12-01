@@ -1,6 +1,10 @@
 <?php
 
-        # This file is to display the navbar with links according to the user accessing page
+        /* 
+        
+            This file is to display the navbar with links according to the user accessing page
+        
+        */
 
 ?>
 

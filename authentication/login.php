@@ -1,10 +1,10 @@
 <?php
 
-    #########################################################################################
-    #                                                                                       #
-    #           This file is to login the user after validating the credentials             #
-    #                                                                                       #
-    #########################################################################################
+    /*
+
+        This file is to login the user after validating the credentials             
+
+    */                                                                                                                                                                                     
 
 
     require "../operations.php"; # contains functions for handling database and sessions

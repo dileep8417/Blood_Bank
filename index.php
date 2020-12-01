@@ -8,20 +8,7 @@
       access the features of the project               
 
 */
-    ################################################################################################
-    #                                                                                              #
-    #      /* Folder Structure                                                                     #  
-    #           assets          -> This folder contains static folders (images/css/js)             # 
-    #           authentication  -> Contains user login, registration, logout realted files         #
-    #           Components      -> Contains basic components of the website (navbar/footer)        #
-    #           config          -> Contains database configuration                                 #
-    #           db              -> Contains database file (.sql)                                   #
-    #           hospital        -> Contains files related to the Hospital user                     #
-    #           modules         -> contains files which are included in other files                #
-    #           templates       -> Contains HTML files                                             #
-    #                                                                                              #
-    ################################################################################################                       
-    
+
    
 
     require "./config/connection.php";   # For establishing databse connection

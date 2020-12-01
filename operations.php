@@ -1,12 +1,11 @@
 <?php
 
-    #############################################################################################    
-    #                                                                                           #        
-    #        This is the core file of the application, it contains the necessary functions to   #                                                                             
-    #        perform database and session related operations.                                   #
-    #                                                                                           #
-    #############################################################################################
-
+    /*                                                                                                   
+            This is the core file of the application, it contains the necessary functions to                                                                                
+            perform database and session related operations.                                   
+                                                                                               
+    */
+    
 
     @session_start();
 

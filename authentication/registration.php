@@ -1,11 +1,11 @@
 <?php
     
-    #########################################################################################
-    #                                                                                       #
-    #           This file is to register both the users after verifying the data            #
-    #                                                                                       #
-    #########################################################################################
+    /*
     
+        This file is to register both the users after verifying the data 
+    
+    */
+ 
 
     require "../operations.php"; # contains methods for handling database and sessions
     

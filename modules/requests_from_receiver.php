@@ -1,7 +1,11 @@
 <?php
 
 
-    # This module is to show the receiver sent requets to the hospital
+    /* 
+    
+        This module is to show the receiver sent requets to the hospital 
+    
+    */
     
     $requests = get_receiver_requests($conn); # For getting recivers requests data
 

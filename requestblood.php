@@ -1,13 +1,12 @@
 <?php
 
-    ###########################################################################################
-    #                                                                                         #
-    #       This file contains the code to send request for the blood units to the            #
-    #       hospitals by the receiver.                                                        #
-    #                                                                                         #
-    ###########################################################################################
+     /*                                                                                        
+           This file contains the code to send request for the blood units to the            
+           hospitals by the receiver.                                                        
+                                                                                             
+    */
 
-
+    
     require "./config/connection.php";   # For establishing databse connection
     require "./operations.php";          # contains methods for handling database and sessions
     

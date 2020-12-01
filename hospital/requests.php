@@ -1,10 +1,10 @@
 <?php
 
-    ###############################################################################################
-    #                                                                                             # 
-    #           This file is to display the requests made by the receivers to the blood bank      #
-    #                                                                                             #
-    ###############################################################################################
+    /*                                                                                            
+          
+        This file is to display the requests made by the receivers to the blood bank                                                                                                          
+
+    */
 
 
       require "../config/connection.php"; # For establishing databse connection

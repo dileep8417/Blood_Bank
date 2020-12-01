@@ -1,12 +1,10 @@
 <?php 
 
-    ##########################################################################################
-    #                                                                                        #
-    #         This file contains the code for displaying all the available hospitals         #                                                                               
-    #         and blood samples related information to the users                             #                                                                              
-    #                                                                                        #
-    ##########################################################################################
-
+     /*                                                                                       
+             This file contains the code for displaying all the available hospitals                                                                                        
+             and blood samples related information to the users                                                                                                           
+                                                                                            
+    */
 
     require "./config/connection.php"; # For establishing databse connection
     require "./operations.php"; # contains methods for handling database and sessions

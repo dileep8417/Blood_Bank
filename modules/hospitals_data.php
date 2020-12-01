@@ -1,13 +1,13 @@
 <?php 
 
-    #############################################################################################
-    #                                                                                           #
-    #       This module is to show the availble hospital details along with the blood units     #
-    #       availability and allows receiver to request hospital for blood                      #
-    #                                                                                           #
-    #############################################################################################
+    /*
+
+        This module is to show the availble hospital details along with the blood units     
+        availability and allows receiver to request hospital for blood  
     
-   
+    */
+                                                                                                                  
+    
     $data = get_all_blood_samples($conn); # For getting available blood samples 
    
     # If no data available

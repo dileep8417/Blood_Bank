@@ -1,10 +1,12 @@
 <?php
 
-    ###########################################################################################
-    #                                                                                         #
-    #    This module is to display the total blood units availability in each blood group     #
-    #                                                                                         #
-    ###########################################################################################
+    /*
+    
+        This module is to display the overall blood units availability in each blood group 
+    
+    */
+                                                                                                
+    
 
 ?>
 <div id="available-blood-samples-count-frame">

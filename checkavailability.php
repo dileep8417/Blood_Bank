@@ -1,6 +1,7 @@
 <?php
 
     # To get count of particular blood sample in the blood bank before allowing receiver request
+    
     if($_SERVER["REQUEST_METHOD"]=="GET"){
         if(isset($_GET["id"])){
             require "./config/connection.php";   # For establishing databse connection
