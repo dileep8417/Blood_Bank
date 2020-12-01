@@ -97,11 +97,12 @@
     <!-- Navbar -->
     <?php include "./components/navbar.php"?>
 
-    <div id="req-frame" class="container-fluid">
+    <div id="req-frame" class="container">
     <h4 class="text-danger">Request Blood Sample</h4>
     <div class="row">
         <div class="col-sm-12">
-            <!-- Requesting hospital information -->
+            <!-- Receiver Requesting hospital information -->
+            <h4>Hospital Details</h4>
             <table class="table">
                 <tr class="center">
                     <th>Hospital Name</th>                        
@@ -118,11 +119,11 @@
 
         <!-- Blood Request Form -->
         <?php include "./templates/receiver-request-form.html"?>
-             
-        
+
+        <!-- Message Field -->
         <div class="col-sm-5">
             <br>
-            <h5 style="width:100vw" class="text-success">Want to leave some message </h5>
+            <h5 style="width:100vw" class="text-success">Want to tell something </h5>
             <textarea name="" id="msg" onkeyup="updateMsg()" placeholder="Type here...."></textarea>
             <button type="submit" class="btn btn-danger" onclick="validateRequest(<?php echo $hospital_id?>)" id="req-btn">Send Request</button>
         </div>
@@ -134,6 +135,10 @@
     <?php include "./components/footer.php"?>
    
     <!-- JS -->
+    <script>
+        let receiverBloodGroup = "<?php echo get_blood_group()?>"; // For storing receivers blood group
+        let hospitalId = "<?php echo $hospital_id?>"
+    </script>
    <script src="./assets/js/requests.js"></script>
 </body>
 </html>

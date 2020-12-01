@@ -16,12 +16,12 @@
                 <tr>
                     <th>Receiver name</th>
                     <th>Age</th>
+                    <th>Receivers Blood Group</th>
+                    <th>Requested</th>
+                    <th>Quantity</th>
+                    <th>Message</th>
                     <th>Contact</th>
                     <th>Location</th>
-                    <th>Message</th>
-                    <th>Receiver Blood Group</th>
-                    <th>Requested Blood Group</th>
-                    <th>Quantity</th>
                     <th>Date</th>
                 </tr>
         <?php
@@ -30,12 +30,12 @@
                 <tr>
                     <td><?php echo $value["name"]?></td>
                     <td><?php echo $value["age"]?></td>
+                    <td><?php echo $value["receiver_bg"]?></td>
+                    <td><?php echo $value["req_bg"]?></td>
+                    <td><?php echo $value["qnt"]?></td>
+                    <td><?php echo $value["msg"]?></td>
                     <td><?php echo $value["contact"]?></td>
                     <td><?php echo $value["city"].",".$value["state"]."-".$value["zipcode"]?></td>
-                    <td><?php echo $value["msg"]?></td>
-                    <td><?php echo $value["receiver_bg"]?></td>
-                    <td><?php echo $value["requested"]?></td>
-                    <td><?php echo $value["qnt"]?></td>
                     <td><?php echo explode(" ",$value["time"])[0]?></td>                              
                 </tr>
                 <?php

@@ -23,9 +23,6 @@
         <?php
             if(is_loggedin()){
                 ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://<?php echo $HOST?>/authentication/logout.php">Logout</a>
-                    </li>
                 <?php
                     if(get_current_path_name()=="index" && get_user_type()=="H"){
                         ?>
@@ -72,6 +69,11 @@
                         </li>
                         <?php
                     }
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://<?php echo $HOST?>/authentication/logout.php">Logout</a>
+                        </li>
+                    <?php
             }else{
                 if(get_current_path_name()=="login"){
                     ?>

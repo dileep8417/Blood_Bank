@@ -119,6 +119,10 @@
                 $hospital_data = mysqli_fetch_assoc($result);
                 $_SESSION['hospital_name'] = $hospital_data["hospital_name"];
                 $_SESSION['hospital_id'] =  $hospital_data["id"];
+            }else{
+                $FETCH_RECEIVER_BLOOD_GROUP_QUERY = "SELECT blood_group FROM receiver_details WHERE user_id='$uid'";
+                $result = mysqli_query($conn,$FETCH_RECEIVER_BLOOD_GROUP_QUERY);
+                $_SESSION['blood_group'] = mysqli_fetch_assoc($result)["blood_group"];
             }
             return true;
         }
@@ -129,7 +133,7 @@
 
     # For sending Request to hospital for blood sample
     # Returns true if request sent else false
-    function send_request($conn,$hospital_id,$blood_group,$quantity){
+    function send_request($conn,$hospital_id,$blood_group,$quantity,$msg){
         $user_id = get_user_id();       # To get current receiver user id
         # Insert requested data into user_requests
         $query = "INSERT INTO user_requests (user_id,hospital_id,blood_group,qnt,msg)
@@ -151,10 +155,10 @@
         $hospital_id = get_hospital_id();
         # Query to fetch requested receivers details
         $FETCH_RECEIVERS_REQUEST_QUERY = "SELECT receiver.user_name,receiver.blood_group AS bg,receiver.age,
-        receiver.state,receiver.city,receiver.zipcode,receiver.contact_no,req.id,req.blood_group AS req_grp,qnt,msg,req.req_time
+        receiver.state,receiver.city,receiver.zipcode,receiver.contact_no,req.id,req.blood_group AS req_bg,qnt,msg,req.req_time
         FROM receiver_details AS receiver 
         JOIN user_requests AS req 
-        ON receiver.user_id=req.user_id AND req.hospital_id='$hospital_id'";
+        ON receiver.user_id=req.user_id AND req.hospital_id='$hospital_id' ORDER BY req.id DESC"; 
 
         $result = mysqli_query($conn,$FETCH_RECEIVERS_REQUEST_QUERY);   # To execute the query
         
@@ -175,8 +179,8 @@
             $receivers_data[$row["id"]]["zipcode"] = $row["zipcode"];
             $receivers_data[$row["id"]]["contact"] = $row["contact_no"];
             $receivers_data[$row["id"]]["msg"] = $row["msg"];
+            $receivers_data[$row["id"]]["req_bg"] = $row["req_bg"];
             $receivers_data[$row["id"]]["time"] = $row["req_time"];
-            $receivers_data[$row["id"]]["requested"] = $row["req_grp"];
             $receivers_data[$row["id"]]["qnt"] = $row["qnt"];
         }
         return $receivers_data;
@@ -199,7 +203,7 @@
     function update_blood_qnt($conn,$grp,$qnt,$action){
         $hospital_id = get_hospital_id();
         # Get available quantity of the blood group in the hospital
-        $val = get_available_qnt($conn,$grp);
+        $val = get_available_qnt($conn,$grp,$hospital_id);
 
         if($action=="inc"){     # If increment add the value
             $val += $qnt;
@@ -220,8 +224,7 @@
 
 
     # Returns available units of blood in each group with in the blood bank
-    function get_available_qnt($conn,$blood_group){
-        $hospital_id = get_hospital_id();
+    function get_available_qnt($conn,$blood_group,$hospital_id){
         $FETCH_BLOOD_QNT_QUERY = "SELECT qnt FROM blood_info WHERE hospital_id='$hospital_id' AND blood_group='$blood_group'";
         $result = mysqli_query($conn,$FETCH_BLOOD_QNT_QUERY);
         $count = mysqli_fetch_assoc($result)["qnt"];
@@ -296,6 +299,14 @@
 
 
 
+    # For getting blood group of receiver
+    function get_blood_group(){
+        if(isset($_SESSION['blood_group'])){
+            return $_SESSION['blood_group'];
+        }
+    }
+
+
     # Returns hospital name of current user
     function get_hospital_name(){
         return $_SESSION['hospital_name'];
@@ -332,7 +343,27 @@
         return 0;
     }
 
-
+    # Changes the blood group string format
+    # aPos -> A+, aNeg -> A-
+    function modify_blood_grp_val($blood_group){
+        if($blood_group=="aPos"){
+            return "A+";
+         }if($blood_group=="bPos"){
+            return "B+";
+         }if($blood_group=="oPos"){
+            return "O+";
+         }if($blood_group=="abPos"){
+            return "AB+";
+         }if($blood_group=="aNeg"){
+            return "A-";
+         }if($blood_group=="bNeg"){
+            return "B-";
+         }if($blood_group=="oNeg"){
+            return "O-";
+         }if($blood_group=="abNeg"){
+            return "AB-";
+         }
+    }
     # To find the count of a table
     # Returns `count` of a table
     function get_count($conn,$table){

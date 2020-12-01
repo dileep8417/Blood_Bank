@@ -2,7 +2,7 @@
 
     # This file is to handle the receiver registration form submision
     
-    if($_SERVER["REQUESTED_METHOD"]=="POST"){
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
         require "../config/connection.php"; # contains database connection
         require "../operations.php"; # contains methods for handling database
 

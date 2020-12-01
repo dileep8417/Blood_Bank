@@ -10,13 +10,9 @@
 
     background-color: none !important;
 }
-input[type=checkbox]{
-    height:22px;
-    position: relative;
-    top:20px;
-}
 #blood-group-table tr td{
     height: 10px !important;;
+    text-align: center;
     box-sizing: border-box;
 }
 #msg{

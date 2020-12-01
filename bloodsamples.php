@@ -35,8 +35,6 @@
     <link rel="stylesheet" href="./assets/css/navbar.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/bloodsamples.css">
-    <!-- JS -->
-    <script src="./assets/js/index.js"></script>
 </head>
 <body>
     <!-- Navbar -->

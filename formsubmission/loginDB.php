@@ -3,7 +3,7 @@
     # This file is to handle the login form submision
 
     
-    if($_SERVER["REQUESTED_METHOD"]=="POST"){
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
         
         require "../config/connection.php"; # contains database connection
         require "../operations.php"; # contains methods for handling database
@@ -21,7 +21,7 @@
                 header("Location: ../hospital/addbloodinfo.php"); // if user is hospital management redirect to hospital addbloodinfo
             }
         }else{
-            header("Location: ../authenticationlogin.php?err=1"); // redirect to login page if credentials are invalid
+            header("Location: ../authentication/login.php?err=1"); // redirect to login page if credentials are invalid
         }
     }
 

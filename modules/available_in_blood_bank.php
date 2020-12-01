@@ -6,7 +6,9 @@
     #        with in the blood bank                                                           #
     #                                                                                         #
     ###########################################################################################
+    
 
+    $hospital_id = get_hospital_id();
 ?>
 
 <table class="table" id="blood-qnt">
@@ -22,13 +24,13 @@
     </tr>
     <tr>
         <!-- Getting the count of each blood group from all the hospitals -->
-        <th><?php echo get_available_qnt($conn,"A+")?></th>
-        <th><?php echo get_available_qnt($conn,"A-")?></th>
-        <th><?php echo get_available_qnt($conn,"B+")?></th>
-        <th><?php echo get_available_qnt($conn,"B-")?></th>
-        <th><?php echo get_available_qnt($conn,"AB+")?></th>
-        <th><?php echo get_available_qnt($conn,"AB-")?></th>
-        <th><?php echo get_available_qnt($conn,"O+")?></th>
-        <th><?php echo get_available_qnt($conn,"O-")?></th>
+        <th><?php echo get_available_qnt($conn,"A+",$hospital_id)?></th>
+        <th><?php echo get_available_qnt($conn,"A-",$hospital_id)?></th>
+        <th><?php echo get_available_qnt($conn,"B+",$hospital_id)?></th>
+        <th><?php echo get_available_qnt($conn,"B-",$hospital_id)?></th>
+        <th><?php echo get_available_qnt($conn,"AB+",$hospital_id)?></th>
+        <th><?php echo get_available_qnt($conn,"AB-",$hospital_id)?></th>
+        <th><?php echo get_available_qnt($conn,"O+",$hospital_id)?></th>
+        <th><?php echo get_available_qnt($conn,"O-",$hospital_id)?></th>
     </tr>
 </table>
