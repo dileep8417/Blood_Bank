@@ -1,0 +1,32 @@
+<table class="table" id="blood-update-table">
+    <tr>
+        <th>Blood Group</th>
+        <th>Quantity</th>
+        <th>Action</th>
+    </tr>
+    <tr>
+        <td>
+            <select id="blood-group" name="bloodgroup">
+                <option value="">--Select the Blood Group--</option>
+                <option value="A+">A+Ve</option>
+                <option value="A-">A-Ve<option>
+                <option value="B+">B+Ve</option>
+                <option value="B-">B-Ve</option>
+                <option value="AB+">AB+Ve</option>
+                <option value="AB-">AB-Ve</option>
+                <option value="O+">O+Ve</option>
+                <option value="O-">O-Ve</option>
+            </select>
+        </td>
+        <td>
+            <input name="qnt" value='0' id="qnt" type="number">
+        </td>
+        <td>
+            <select name="action" id="action">
+                <option value="inc">Increment</option>
+                <option value="dec">Decrement</option>
+            </select>
+        </td>
+    </tr>
+</table>
+<input type="submit" id="update-blood-info-btn" value="Update" class="btn">

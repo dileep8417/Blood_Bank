@@ -1,0 +1,214 @@
+
+<div class="col-md-5" id="req-sample">
+    <br>
+    <h5 class="text-danger">Select the needed blood groups</h5>
+
+
+    <!-- Invisible form for handling form submission -->
+    <form style="display:none" action="<?php echo htmlentities($_SERVER['PHP_SELF'])?>" method="POST" id="req-form">
+        <input type="text" name="hospitalid" value="<?php echo $hospital_id?>">
+        <input type="text" value='0' name="apos" id="a-pos-qnt-i">
+        <input type="text" value='0' name="aneg" id="a-neg-qnt-i">
+        <input type="text" value='0' name="bpos" id="b-pos-qnt-i">
+        <input type="text" value='0' name="bneg" id="b-neg-qnt-i">
+        <input type="text" value='0' name="abpos" id="ab-pos-qnt-i">
+        <input type="text" value='0' name="abneg" id="ab-neg-qnt-i">
+        <input type="text" value='0' name="opos" id="o-pos-qnt-i">
+        <input type="text" value='0' name="oneg" id="o-neg-qnt-i">
+        <input type="text" id="msg-i" name="msg">
+    </form>
+
+
+    <!-- Request form -->
+    <table class="table" id="blood-group-table">
+    <tr>
+        <th>Group</th>
+        <th>Option</th>
+        <th>Quantity</th>
+    </tr>
+    <tr>
+        <td>
+            <p class="sample-name">A+</p>
+        </td>
+        <td>
+            <input id="a-pos" onchange="chgQnt(this.id)" type="radio" name="bloodgroups" class="bloodgroups">
+        </td>
+        <td>
+            <select onchange="updateForm(this.id)" class="qnt" disabled name="apos" id="a-pos-qnt">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="sample-name">A-</p>
+        </td>
+        <td>
+            <input id="a-neg" onchange="chgQnt(this.id)" type="radio" name="bloodgroups" class="bloodgroups">
+        </td>
+        <td>
+            <select onchange="updateForm(this.id)" class="qnt" disabled name="aneg" id="a-neg-qnt">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="sample-name">B+</p>
+        </td>
+        <td>
+            <input id="b-pos" onchange="chgQnt(this.id)" type="radio" name="bloodgroups" class="bloodgroups">
+        </td>
+        <td>
+            <select onchange="updateForm(this.id)" class="qnt" disabled name="bpos" id="b-pos-qnt">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="sample-name">B-</p>
+        </td>
+        <td>
+            <input id="b-neg" onchange="chgQnt(this.id)" type="radio" name="bloodgroups" class="bloodgroups">
+        </td>
+        <td>
+            <select onchange="updateForm(this.id)" class="qnt" disabled name="bneg" id="b-neg-qnt">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="sample-name">AB+</p>
+        </td>
+        <td>
+            <input id="ab-pos" onchange="chgQnt(this.id)" type="radio" name="bloodgroups" class="bloodgroups">
+        </td>
+        <td>
+            <select onchange="updateForm(this.id)" class="qnt" disabled name="abpos" id="ab-pos-qnt">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="sample-name">AB-</p>
+        </td>
+        <td>
+            <input id="ab-neg" onchange="chgQnt(this.id)" type="radio" name="bloodgroups" class="bloodgroups">
+        </td>
+        <td>
+            <select onchange="updateForm(this.id)" class="qnt" disabled name="abneg" id="ab-neg-qnt">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="sample-name">O+</p>
+        </td>
+        <td>
+            <input id="o-pos" onchange="chgQnt(this.id)" type="radio" name="bloodgroups" class="bloodgroups">
+        </td>
+        <td>
+            <select onchange="updateForm(this.id)" class="qnt" disabled name="opos" id="o-pos-qnt">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="sample-name">O-</p>
+        </td>
+        <td>
+            <input id="o-neg" onchange="chgQnt(this.id)" type="radio" name="bloodgroups" class="bloodgroups">
+        </td>
+        <td>
+            <select onchange="updateForm(this.id)" class="qnt" disabled name="oneg" id="o-neg-qnt">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </td>
+    </tr>
+    </table>
+</div>

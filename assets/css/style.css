@@ -1,0 +1,89 @@
+*{
+    font-family: 'Inter', sans-serif;
+    padding:5px;
+}
+body,html{
+    background-color:#f5f3f3;
+    margin:0px !important;
+    padding:0;
+    width:100%;
+    overflow-x: hidden;
+}
+body{
+    position: relative;
+    min-height: 100vh;
+    padding-bottom:190px;
+}
+*{
+    font-size:18px;
+}
+a{
+    text-decoration:none !important;
+    color:black;
+}
+#live-data{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    margin-top:-30px;
+    width:80%;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+}
+#live-data .frame .title{
+    font-weight:bold;
+    font-size: 5vmin;
+}
+#live-data .frame .count{
+    font-size: 8vmin;
+    text-align:center;
+    font-weight: bold;
+    color:#3EADEC;
+    margin-top: -20px;
+}
+#blood-qnt{
+    border:1px solid #A4A4A4;
+    border-top:none;
+}
+#qnt{
+    width:70px !important;
+}
+#blood-update-table tr:nth-child(1){
+    background:none !important;
+    color:black;
+}
+#blood-update-table,#update-blood-info-btn{
+    max-width:400px;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+}
+#update-blood-info-btn{
+    width:80%;
+    max-width:150px;
+    background-color: #e45757;
+    color: white;
+}
+
+
+.table tr td,.table tr th{
+    font-size: 2.8vmin;
+    text-align: center;
+}
+#table-data-frame{
+    width:100%;
+    position: relative;
+    overflow-x:scroll !important;
+}
+.remove-donor-icon{
+    width:37px;
+    margin-top:-10px;
+}
+.remove-donor-icon:hover{
+    cursor: pointer;
+}
+.table tr:nth-child(1){
+    background-color: #e45757 !important;
+    color: rgb(236, 236, 236);
+}

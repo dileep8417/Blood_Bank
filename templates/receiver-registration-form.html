@@ -1,0 +1,58 @@
+<div class="container form-frame">
+
+    <b style="float:right;"><a class="reg-links text-success" href="./registration.php?category=hospital">Hospital&nbsp;Registration&nbsp;-></a></b>
+    
+    <p id="err-msg" class="text-danger"></p>
+    <p style="font-weight:bold;font-size:25px">Receiver Regitration</p>
+    
+    <form action="../formsubmission//receiver-registrationDB.php" method="POST" id="receiver-registration" class="form">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5 offset-1">
+                    <label for="">User Name</label><br>
+                    <input id="username" name="username" type="text"><br>
+                
+                    <label for="">Email Id</label><br>
+                    <input id="email" name="email" type="email"><br>
+                
+                    <label for="">Blood Group</label><br>
+                    <select id="bloodgroup" name="bloodgroup">
+                        <option value="">--Select Your Blood Group--</option>
+                        <option value="A+">A+Ve</option>
+                        <option value="A-">A-Ve<option>
+                        <option value="B+">B+Ve</option>
+                        <option value="B-">B-Ve</option>
+                        <option value="AB+">AB+Ve</option>
+                        <option value="AB-">AB-Ve</option>
+                        <option value="O+">O+Ve</option>
+                        <option value="O-">O-Ve</option>
+                    </select><br>
+                
+                    <label for="">Age</label><br>
+                    <input id="age" name="age" type="number"><br>
+                
+                    <label for="">State</label><br>
+                    <input id="state" name="state" type="text">
+                </div>
+            
+                <div class="col-md-5 offset-1">
+                    <label for="">City</label><br>
+                    <input id="city" name="city" type="text"><br>
+                
+                    <label for="">Zipcode</label><br>
+                    <input id="zipcode" name="zipcode" type="text"><br>
+                
+                    <label for="">Contact number</label><br>
+                    <input id="contact" name="contact" type="number"><br>
+                
+                    <label for="">Password</label><br>
+                    <input id="pwd" name="pwd" type="password"><br>
+                
+                    <label for="">Re-Password</label><br>
+                    <input id="repwd" type="password"><br>
+                </div>
+            </div>
+        </div>
+        <button class="btn" id="receiver-register-btn">Register</button>
+    </form>
+</div>

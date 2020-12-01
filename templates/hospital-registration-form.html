@@ -1,0 +1,42 @@
+<div class="container form-frame">
+
+    <b style="float:right;clear:both"><a class="reg-links text-primary" href="./registration.php?category=receiver">Receiver&nbsp;Registration&nbsp;-></a></b>
+
+    <p id="err-msg" class="text-danger"></p>
+    <p style="font-weight:bold;font-size:28px">Hospital Regitration</p>
+  
+    <form action="../formsubmission/hospital-registrationDB.php" method="POST" id="hospital-registration" class="form">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5 offset-1">
+                    <label for="">Hospital Name</label><br>
+                    <input id="hospital" name="hospital" type="text"><br>
+
+                    <label for="">State</label><br>
+                    <input id="state" name="state" type="text"><br>
+                
+                    <label for="">City</label><br>
+                    <input id="city" name="city" type="text"><br>
+                
+                    <label for="">Zipcode</label><br>
+                    <input id="zipcode" name="zipcode" type="text"><br>
+                
+                    <label for="">Contact number</label><br>
+                    <input id="contact" name="contact" type="number"><br>
+                </div>
+            
+                <div class="col-md-5 offset-1">
+                    <label for="">Email Id</label><br>
+                    <input id="email" name="email" type="email"><br>
+
+                    <label for="">Password</label><br>
+                    <input id="pwd" name="pwd" type="password"><br>
+                
+                    <label for="">Re-Password</label><br>
+                    <input id="repwd" type="password"><br>
+                </div>
+            </div>
+        </div>
+        <button class="btn" id="hospital-register-btn">Register</button>
+    </form>
+</div>

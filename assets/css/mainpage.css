@@ -1,0 +1,51 @@
+.big-letter{
+    font-size:35px;
+    position: relative;
+    right: -4px;
+}
+#about{
+    text-align: justify;
+}
+.available-donors-link{
+    line-height: 50px;
+    font-weight: bold;
+    color:#E22929;
+    padding:10px;
+}
+.available-donors-link:hover{
+    cursor: pointer;
+}
+.registration-heading{
+    font-weight: bold;
+    line-height: 29px;
+    position: relative;
+    font-size:24px;
+    margin-top: -20px;
+    text-align: center;
+    color:#E22929;
+}
+.link-btn{
+    width:50%;
+    min-width:200px;
+    height:44px;
+    font-size:18px;
+    font-weight: bold;
+    color: white;
+}
+
+.receivers-reg-link{
+    background-color:#3EADEC;
+    margin-left:20px;
+    margin-right:20px;
+}
+.hospital-reg-link{
+    background-color:#49CB65;
+    margin-right:20px;
+    margin-left:20px;
+    margin-bottom:20px;
+}
+.reg{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}

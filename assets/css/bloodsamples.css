@@ -1,0 +1,45 @@
+#available-blood-samples-count-frame{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#available-blood-samples-count-frame .frame{
+    min-width:120px;
+    height:120px;
+    background-color: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 2px black;
+    margin-bottom: 15px;
+    transition: all .4;
+}
+#available-blood-samples-count-frame .frame:hover{
+    transform: scale(1.1);
+}
+#available-blood-samples-count-frame .frame .sample-type,#available-blood-samples-count-frame .frame .sample-count{
+    text-align: center;
+    position: relative;
+    margin-top: -10px;
+    top:10px;
+    font-weight: bolder;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#E22929;
+}
+#available-blood-samples-count-frame .frame .sample-count{
+    position: relative;
+    top:-20px;
+    font-size: 32px;;
+    color: #3EADEC;
+}
+#blood-sample-data tr:hover{
+    background-color: #e7e7e7;
+}
+.req-icon{
+   width:35px;
+   transition: all .5;
+}
+.req-icon:hover{
+    cursor: pointer;
+    width:36px;
+}
