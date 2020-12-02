@@ -29,13 +29,13 @@
                 VALUES('$user_id','$user_name','$blood_group','$age','$state','$city','$zipcode','$contact')";
                 $result = mysqli_query($conn,$insert_query);
                 if($result){
-                    echo "Registered successfully...";
+                    #echo "Registered successfully...";
                     # Redirects to login page after completion of registration
                     header("Location: ../authentication/login.php");    
                 }
             }
         }else{
-            echo "Email already exist !";
+            #echo "Email already exist !";
             header("Location: ../authentication/login.php?err=2");      # Redirects to login page and shows error message
         }
     }

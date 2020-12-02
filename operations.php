@@ -9,13 +9,18 @@
 
     @session_start();
 
-    $HOST = $_SERVER['HTTP_HOST']."/BloodBank";      # For getting Domain name of the website
+    # If you are running in localhost mention the name of the project placed folder
+    # EX: foldername/
+    $PROJECT_FOLDER_NAME = "BloodBank/";     # For routing among the links
+    
+    $HOST = $_SERVER['HTTP_HOST']."/$PROJECT_FOLDER_NAME";      # For getting Domain name of the website
 
    
     # To get all the hospitals data for displaying blood availability and quantity to users
     # Returns an associative array that contans hospitals and blood sample count data
     function get_all_blood_samples($conn){
         # To get blood units and hospital data
+        # Joining hospitals and blood_info table
         $FETCH_HOSPITAL_BLOOD_SAMPLES_COUNT_QUERY = "SELECT hospitals.id,hospital_name,hospitals.state,
         hospitals.city,hospitals.zipcode,hospitals.contact_no,blood_info.blood_group,qnt
         FROM 
@@ -27,18 +32,17 @@
        
         $result = mysqli_query($conn,$FETCH_HOSPITAL_BLOOD_SAMPLES_COUNT_QUERY);    # Execute query
         $blood_sample_data = array();                   # Array to store the final data
-        
-       # Setting blood samples count and hospitals data into the array 
-       while($row = mysqli_fetch_assoc($result)){
-           # Checking key exists or not
-           # If not exists create
+        # Setting blood samples count and hospitals data into the array 
+        while($row = mysqli_fetch_assoc($result)){
+            # Checking key exists or not
+            # If not exists create
             if(!array_key_exists($row["id"],$blood_sample_data)){
                 $blood_sample_data[$row['id']] = array("hospital_name"=>"",
                 "hospital_id"=>"",
                 "location"=>"",
                 "A+"=>0,"A-"=>0,"B+"=>0,"B-"=>0,"AB+"=>0,"AB-"=>0,"O+"=>0,"O-"=>0);        
             }
-            # Setting the data 
+            # Setting the hospital data along with its blood availability 
             if($row['blood_group']=="A+"){
                 $blood_sample_data[$row["id"]]["A+"] = $row["qnt"];
             }else if($row['blood_group']=="A-"){
@@ -62,13 +66,11 @@
             else if($row['blood_group']=="O-"){
                 $blood_sample_data[$row["id"]]["O-"] = $row["qnt"];
             }
-
             $blood_sample_data[$row["id"]]["hospital_id"] = $row["id"]; 
             $blood_sample_data[$row["id"]]["hospital_name"] = $row["hospital_name"];
             $blood_sample_data[$row["id"]]["location"] = $row["city"].",".$row["state"]."-".$row["zipcode"];
         }
-        
-       return $blood_sample_data;   # Contains hospitals and blood sample count data
+        return $blood_sample_data;   # Contains hospitals and blood sample count data
     }
 
 
@@ -76,7 +78,7 @@
     # To check whether email Id exist or not
     # Returns `user id` if email exist else `false`
     function is_email_exist($conn,$email){
-        # Fetch user id from database using email id
+        # Fetch user id from users table using email id
         $FETCH_USER_ID = "SELECT id from users WHERE email='$email'";
         $result = mysqli_query($conn,$FETCH_USER_ID);
         if(mysqli_num_rows($result)>0){
@@ -86,11 +88,11 @@
         return false;   # if registration fails
     }
     
-    
 
     # For registering the users into the application
     # Returns `user id` if registration completed else `false`
     function register($conn,$email,$pwd,$type){
+        # Add the user credentials into users table
         $INSERT_USER_CREDENTIALS_QUERY = "INSERT INTO users (email,password,type) VALUES('$email','$pwd','$type')";
         $result = mysqli_query($conn,$INSERT_USER_CREDENTIALS_QUERY);
         if($result){
@@ -106,26 +108,29 @@
         $USER_LOGIN_QUERY = "SELECT id,type from users WHERE email='$email' AND password='$pwd'";
         $result = mysqli_query($conn,$USER_LOGIN_QUERY);
         if(mysqli_num_rows($result)>0){
-            $row = mysqli_fetch_assoc($result);
+            $row = mysqli_fetch_assoc($result);     # Returns an associative array contains data from the selected table
+            # Setting sessions
             $_SESSION['id'] = $row['id'];
             $uid = $row['id'];
-            $_SESSION['username'] = $row['username'];
             $_SESSION['email'] = $email;
             $_SESSION['type'] = $row['type'];
             if($row['type']=="H"){
+                # Fetching hospital details if the user is hospital
                 $FETCH_USER_HOSPITAL_QUERY = "SELECT * FROM hospitals WHERE user_id='$uid'";
                 $result = mysqli_query($conn,$FETCH_USER_HOSPITAL_QUERY);
                 $hospital_data = mysqli_fetch_assoc($result);
+                # Setting sessions for hospital
                 $_SESSION['hospital_name'] = $hospital_data["hospital_name"];
                 $_SESSION['hospital_id'] =  $hospital_data["id"];
             }else{
+                # Fetching receiver details if the user is receiver
                 $FETCH_RECEIVER_BLOOD_GROUP_QUERY = "SELECT blood_group FROM receiver_details WHERE user_id='$uid'";
                 $result = mysqli_query($conn,$FETCH_RECEIVER_BLOOD_GROUP_QUERY);
                 $_SESSION['blood_group'] = mysqli_fetch_assoc($result)["blood_group"];
             }
-            return true;
+            return true;      # on completion of login
         }
-        return false;
+        return false;       # on failure on login
     }
 
 
@@ -187,23 +192,11 @@
 
 
 
-    # For getting receivers requests in the blood bank
-    function get_requests_count($conn){
-        $hospital_id = get_hospital_id();
-        $FETCH_REQUESTS_COUNT_QUERY = "SELECT COUNT(id) AS count FROM user_requests WHERE hospital_id='$hospital_id'";
-        $result = mysqli_query($conn,$FETCH_REQUESTS_COUNT_QUERY);
-        $count = mysqli_fetch_assoc($result)['count'];
-        return $count;
-    }
-
-
-
     # Used to update the blood information in a blood bank
     function update_blood_qnt($conn,$grp,$qnt,$action){
         $hospital_id = get_hospital_id();
         # Get available quantity of the blood group in the hospital
         $val = get_available_qnt($conn,$grp,$hospital_id);
-
         if($action=="inc"){     # If increment add the value
             $val += $qnt;
         }else{
@@ -218,6 +211,27 @@
         mysqli_query($conn,$UPDATE_BLOOD_QNT_QUERY);
 
         return true;
+    }
+
+
+
+    # For getting receivers requests in the blood bank
+    function get_requests_count($conn){
+        $hospital_id = get_hospital_id();
+        $FETCH_REQUESTS_COUNT_QUERY = "SELECT COUNT(id) AS count FROM user_requests WHERE hospital_id='$hospital_id'";
+        $result = mysqli_query($conn,$FETCH_REQUESTS_COUNT_QUERY);
+        $count = mysqli_fetch_assoc($result)['count'];
+        return $count;
+    }
+
+
+
+    # For getting all the receivers requests in the application
+    function get_all_requests_count($conn){
+        $FETCH_REQUESTS_COUNT_QUERY = "SELECT COUNT(id) AS count FROM user_requests";
+        $result = mysqli_query($conn,$FETCH_REQUESTS_COUNT_QUERY);
+        $count = mysqli_fetch_assoc($result)['count'];
+        return $count;
     }
 
 
@@ -242,7 +256,6 @@
     }
 
 
-
     # To restrict the access of loggedin users from accessing registration, login pages
     # Redirects to specific page
     function redirect_if_loggedin(){
@@ -250,14 +263,13 @@
             global $HOST;
             if(get_user_type()=="H"){
                 # If hospital
-                header("Location: http://$HOST/hospital/addbloodinfo.php");
+                header("Location: http://$HOST"."hospital/addbloodinfo.php");
             }else{
                 # If receiver
-                header("Location: http://$HOST/bloodsamples.php");
+                header("Location: http://$HOST"."bloodsamples.php");
             }
         }
     }
-
 
 
     # To restrict guest users from accessing important pages
@@ -265,10 +277,9 @@
     function redirect_if_not_loggedin(){
         if(!is_loggedin()){
             global $HOST;
-            header("Location: http://$HOST/authentication/login.php");
+            header("Location: http://$HOST"."authentication/login.php");
         }
     }
-
 
 
     # To restrict receiver from accessing hospital user pages
@@ -276,10 +287,9 @@
     function redirect_if_receiver(){
         global $HOST;
         if(get_user_id() && get_user_type()=="R"){
-            header("Location: http://$HOST/bloodsamples.php");
+            header("Location: http://$HOST"."bloodsamples.php");
         }
     }
-
 
 
     # For getting hospital id of the current user
@@ -289,7 +299,6 @@
     }
 
 
-
     # For getting user id of the current user
     # Returns user id
     function get_user_id(){
@@ -297,12 +306,12 @@
     }
 
 
-
     # For getting blood group of receiver
     function get_blood_group(){
         if(isset($_SESSION['blood_group'])){
             return $_SESSION['blood_group'];
         }
+        return false;
     }
 
 
@@ -310,7 +319,6 @@
     function get_hospital_name(){
         return $_SESSION['hospital_name'];
     }
-
 
 
     # For getting the category of the current user [Receiver or Hospital]
@@ -363,6 +371,9 @@
             return "AB-";
          }
     }
+
+
+    
     # To find the count of a table
     # Returns `count` of a table
     function get_count($conn,$table){

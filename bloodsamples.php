@@ -11,8 +11,8 @@
 
     # To display alert message on screen after receiver sents request to hospital
     if(isset($_SESSION['success'])){
-        unset($_SESSION['success']);
-        alert("Your request sent successfully."); 
+        unset($_SESSION['success']);       # Deletes the session
+        alert("Your request sent successfully.");   # Creates alert box
     }
 ?>
 
@@ -33,12 +33,17 @@
     <link rel="stylesheet" href="./assets/css/navbar.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/bloodsamples.css">
+    <!-- JS -->
+    <script src="./assets/js/index.js"></script>
 </head>
 <body>
+    <!-- For showing loading progress on page -->
+    <div id="loader"></div>
+
     <!-- Navbar -->
     <?php include "./components/navbar.php"?>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="body">
         <!-- To display the total amount of available units in each blood group -->
         <h4>Available Units</h4>
         <?php include "./modules/blood_samples_count.php"?>
@@ -53,6 +58,6 @@
     <?php include "./components/footer.php"?>
 
      <!-- JS -->
-     <script src="./assets/js/requests.js"></script>
+     <script src="./assets/js/bloodsamples.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
     <!-- Logo -->
     <a class="navbar-brand logo" href="http://<?php echo $HOST?>">
         <p>Saver</p>
-        <img src="http://<?php echo $HOST?>/assets/images/blood-drop.png" alt="">
+        <img src="http://<?php echo $HOST?>assets/images/blood-drop.png" alt="">
     </a>
     <!-- Toogler Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,51 +31,51 @@
                     if(get_current_path_name()=="index" && get_user_type()=="H"){
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://<?php echo $HOST?>/hospital/addbloodinfo.php">Dashboard</a>
+                            <a class="nav-link" href="http://<?php echo $HOST?>hospital/addbloodinfo.php">Dashboard</a>
                         </li>
                         <?php
                     }
                     else if(get_current_path_name()=="addbloodinfo"){
                         ?>
                         <li class="nav-item">
-                        <a class="nav-link" href="http://<?php echo $HOST?>/bloodsamples.php">Available Samples</a>
+                        <a class="nav-link" href="http://<?php echo $HOST?>bloodsamples.php">Available Samples</a>
                         </li>
                         <?php
                     }
                     else if(get_current_path_name()=="bloodsamples" && get_user_type()=="H"){
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://<?php echo $HOST?>/hospital/addbloodinfo.php">Dashboard</a>
+                            <a class="nav-link" href="http://<?php echo $HOST?>hospital/addbloodinfo.php">Dashboard</a>
                         </li>
                     <?php
                     }
                     else if(get_current_path_name()=="requests" && get_user_type()=="H"){
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://<?php echo $HOST?>/hospital/addbloodinfo.php">Dashboard</a>
+                            <a class="nav-link" href="http://<?php echo $HOST?>hospital/addbloodinfo.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://<?php echo $HOST?>/bloodsamples.php">Available Samples</a>
+                            <a class="nav-link" href="http://<?php echo $HOST?>bloodsamples.php">Available Samples</a>
                         </li>
                     <?php
                     }
                     else if(get_current_path_name()=="requestblood"){
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://<?php echo $HOST?>/bloodsamples.php">Available Samples</a>
+                            <a class="nav-link" href="http://<?php echo $HOST?>bloodsamples.php">Available Samples</a>
                         </li>
                         <?php
                     }
                     else if(get_current_path_name()=="adddonor"){
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://<?php echo $HOST?>/bloodsamples.php">Available Samples</a>
+                            <a class="nav-link" href="http://<?php echo $HOST?>bloodsamples.php">Available Samples</a>
                         </li>
                         <?php
                     }
                     ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://<?php echo $HOST?>/authentication/logout.php">Logout</a>
+                            <a class="nav-link" href="http://<?php echo $HOST?>authentication/logout.php">Logout</a>
                         </li>
                     <?php
             }else{
@@ -91,7 +91,7 @@
                 }else{
                     ?>   
                     <li class="nav-item">
-                        <a class="nav-link" href="http://<?php echo $HOST?>/authentication/login.php">Login</a>
+                        <a class="nav-link" href="http://<?php echo $HOST?>authentication/login.php">Login</a>
                     </li>
                     <?php
                 }
@@ -100,7 +100,6 @@
     </ul>
   </div>
 </nav>
-
 
     
 <!-- Bootstrap JS -->

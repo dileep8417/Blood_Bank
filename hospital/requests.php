@@ -33,13 +33,19 @@
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/req.css">
+    <!-- JS -->
+    <script src="../assets/js/index.js"></script>
 </head>
 <body>
+
+    <!-- For showing loading progress on page -->
+    <div id="loader"></div>
+
     <!-- Navbar -->
     <?php include "../components/navbar.php"?>
 
     <!-- Content -->
-    <div class="container-fluid">
+    <div class="container-fluid" id="body">
         <div class="row">
             <h4 class="text-danger">Receivers Requests</h4>
             <div id="requests">

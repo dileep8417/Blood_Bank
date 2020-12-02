@@ -9,7 +9,6 @@
 
 */
 
-   
 
     require "./config/connection.php";   # For establishing databse connection
     require "./operations.php";          # contains methods for handling database and sessions
@@ -33,48 +32,53 @@
     <link rel="stylesheet" href="./assets/css/mainpage.css">
     <link rel="stylesheet" href="./assets/css/navbar.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
+    <!-- JS -->
+    <script src="./assets/js/index.js"></script>
 </head>
 <body>
 
-         <!-- Navbar -->
-         <?php include "./components/navbar.php"?>
+    <!-- For showing loading progress on page -->
+    <div id="loader"></div>
 
-        <div class="container">
-            <!-- About -->
-            <p id="about">
-               <span class="big-letter">S</span>aver is a blood banking system for helping the people who are in urgent of blood, by sending the receivers request to the available Blood Banks.
-            </p>
+        <!-- Navbar -->
+        <?php include "./components/navbar.php"?>
 
-            <!-- Available donors link -->
-            <b>Are you in search for blood-<a href="./bloodsamples.php" class="available-donors-link">Check&nbsp;Available&nbsp;Blood&nbsp;Samples-></a></b>
-            <p>
-            At present we are with
-            </p>
-            
-            <!-- Live count -->
-            <?php include "./modules/hospitals_count.php"?>
+    <div class="container" id="body">
+        <!-- About -->
+        <p id="about">
+            <span class="big-letter">S</span>aver is a blood banking system for helping the people who are in urgent of blood, by sending the receivers request to the available Blood Banks.
+        </p>
 
-           <!-- Registration Links -->
-           <p class="registration-heading">Register with us</p>
-            <div class="reg">
-                <a href="./authentication/registration.php?category=hospital"><button class="link-btn hospital-reg-link btn">For Hospitals</button></a>
-                <a href="./authentication/registration.php?category=receiver"><button class="link-btn receivers-reg-link btn">For Receivers</button></a>
-            </div>
-           
-            <!-- Note -->
-            <div class="note">
-                <p>
-                <b>Note:</b>
-                To donate blood or platelets, you must be in good general health, weigh at least 110 pounds,
-                and be at least 16 years old.
-                </p>
-            </div>
-            
+        <!-- Available donors link -->
+        <b>Are you in search for blood-<a href="./bloodsamples.php" class="available-donors-link">Check&nbsp;Available&nbsp;Blood&nbsp;Samples-></a></b>
+        <p>
+        At present we are with
+        </p>
+        
+        <!-- Live count -->
+        <?php include "./modules/data_count.php"?>
+
+        <!-- Registration Links -->
+        <p class="registration-heading">Register with us</p>
+        <div class="reg">
+            <a href="./authentication/registration.php?category=hospital"><button class="link-btn hospital-reg-link btn">For Hospitals</button></a>
+            <a href="./authentication/registration.php?category=receiver"><button class="link-btn receivers-reg-link btn">For Receivers</button></a>
         </div>
+        
+        <!-- Note -->
+        <div class="note">
+            <p>
+            <b>Note:</b>
+            To donate blood or platelets, you must be in good general health, weigh at least 110 pounds,
+            and be at least 16 years old.
+            </p>
+        </div>
+        
+    </div>
 
 
-        <!-- footer -->
-        <?php include "./components/footer.php"?>
+    <!-- footer -->
+    <?php include "./components/footer.php"?>
 
 </body>
 </html>

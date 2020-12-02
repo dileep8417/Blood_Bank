@@ -92,7 +92,7 @@
     <link rel="stylesheet" href="./assets/css/req.css">
 </head>
 <body>
-    
+
     <!-- Navbar -->
     <?php include "./components/navbar.php"?>
 

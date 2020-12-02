@@ -6,7 +6,7 @@
 
     */                                                                                                                                                                                     
 
-
+    
     require "../operations.php"; # contains functions for handling database and sessions
     
     redirect_if_loggedin() # redirect to actual page if the user is already loggedin

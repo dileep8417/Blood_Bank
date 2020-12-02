@@ -45,13 +45,18 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
+    <!-- JS -->
+    <script src="../assets/js/index.js"></script>
 </head>
 <body>
-     
+        
+    <!-- For showing loading progress on page -->
+    <div id="loader"></div>
+
     <!-- Navbar -->
     <?php include "../components/navbar.php"?>
     
-    <div class="container">
+    <div class="container" id="body">
         <h4 style="font-weight:bold">Welcome, <?php echo get_hospital_name()?></h4>
         <br>
            <!-- Show request count -->

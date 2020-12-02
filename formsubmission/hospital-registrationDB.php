@@ -28,7 +28,7 @@
                 VALUES('$user_id','$hospital_name','$state','$city','$zipcode','$contact')";
                 $result = mysqli_query($conn,$insert_query);        # Executes query
                 if($result){
-                    echo "Registered successfully...";
+                    #echo "Registered successfully...";
                     # Inserts data to blood_info table
                     # Get the hospital id of current registering user for referencing in blood_info table
                     $query = "SELECT id FROM hospitals WHERE user_id='$user_id' LIMIT 1";
@@ -50,7 +50,7 @@
             }
         }
         else{
-            echo "Email already exist !";
+            #echo "Email already exist !";
             header("Location: ../authentication/login.php?err=2"); # Redirects user to login page and displays error message
         }
     }

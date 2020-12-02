@@ -1,5 +1,13 @@
 This project cotains the code for Blood Bank Mangement System
 
+Running the Project
+    -> Import database file (.sql) into `PhpMyAdmin` from `db/blood_bank.sql` 
+    
+    -> Update the database credentials in `config/connection.php` file
+    
+    -> Set project folder name in operation.php file for routing 
+
+
 Folder Structure                                                                       
     assets          -> This folder contains static folders (images/css/js)   
 
@@ -18,6 +26,7 @@ Folder Structure
     templates       -> Contains HTML files 
  
 
+
 Tables in the database
     users              -> Stores users email and password along with their type for login
 
@@ -28,3 +37,7 @@ Tables in the database
     blood_info         -> Stores blood units information of the hospitals
 
     user_requests      -> Stores the requests made by the receivers for the blood
+
+
+
+

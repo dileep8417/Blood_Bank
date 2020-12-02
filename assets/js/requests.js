@@ -15,27 +15,13 @@ let supportedBloodGroups = {
 };
 let availableQuantity;  // For storing the quantity of a particular blood group available in blood bank
 let selectedQuantity;   // For storing user selected quantity
+let selectedBloodGroup; // For storing receiver selected blood group
 
 
 // Calls the function when the page is loaded
 window.onload = function(){
     // Load the form with receiver eligible blood groups
     setForm(receiverBloodGroup); // Sets the form according the receiver blood group
-}
-
-// Redirects the user to blood samples request page
-function sendReq(hospitalId){
-    location.href = "./requestblood.php?id="+hospitalId;
-}
-
-// Redirects the user to login page if the user not loggedin
-function notLoggedin(){
-    location.href="./authentication/login.php";
-}
-
-// alerts the hospital user when clicked on the request button 
-function notReceiver(){
-    alert("You are not allowed to request.");
 }
 
 // To change the actual value to convinient value
@@ -60,6 +46,7 @@ function changeFormat(bloodGroup){
 }
 
 // Sets the blood request form when the page is loaded for displaying receiver eligible blood types
+// This function called when the page is loaded
 function setForm(){
     // updating the variable value according to the blood group for handling html elements
     let bloodGroup = changeFormat(receiverBloodGroup);
@@ -72,6 +59,7 @@ function setForm(){
 
 // Function will be called on change in the blood quantity dropdown field
 // Updates the hiddent form fields for sending the data to store in database
+// This function called when dropdown field value changed
 function updateForm(id){
     let val = document.getElementById(id).value;
     document.getElementById(id+"-i").value = val;
@@ -79,17 +67,19 @@ function updateForm(id){
 }
 
 // updates the hidden form fields when message field [textarea] updated 
+// This function called when text changed in textarea 
 function updateMsg(){
     document.getElementById("msg-i").value = document.getElementById("msg").value;
 }
 
-// Set
+
 // Function called on change in the selection of blood groups
 // Allows user to select only one particular blood group
+// This function called when change in radio boxes
 function chgQnt(id){        // Takes the id of the radio button 
     let check = document.getElementById(id);
     let allFields = document.getElementsByClassName("bloodgroups");
-    // Sets the allFields blood group quantity to 0
+    // Sets the blood group quantity dropdown value to 0 and disables it
     for(let i=0;i<allFields.length;i++){
         document.getElementById(allFields[i].id+"-qnt").selectedIndex = 0;
         document.getElementById(allFields[i].id+"-qnt").disabled = true;
@@ -101,11 +91,16 @@ function chgQnt(id){        // Takes the id of the radio button
         document.getElementById(id+"-qnt").disabled = false;
         document.getElementById(id+"-qnt-i").value = 1;
         selectedQuantity = 1;
+        selectedBloodGroup = id;
     }
 }
 
 // To check the availability of receiver requested blood group
 function checkAvailability(){
+    let submitBtn = document.getElementById("req-btn");    // For manipulating send request button
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
     let bloodGroup = changeFormat(receiverBloodGroup);
     // Sending HTTP request for getting available quanity in blood bank
     var xhttp = new XMLHttpRequest();                   // Creates object for XMLHttpRequest
@@ -119,13 +114,16 @@ function checkAvailability(){
                 // Submits the form
                 document.getElementById("req-form").submit();
             }
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Send Request";
         }
     };
-    xhttp.open("GET", `./checkavailability.php?id=${hospitalId}&grp=${bloodGroup}`, true);
+    xhttp.open("GET", `./checkavailability.php?id=${hospitalId}&grp=${selectedBloodGroup}`, true);
     xhttp.send()
 }
 
 // validates the user sent request and submit the hidden form
+// Called when the receiver clicks the send request button
 function validateRequest(hospitalId){
     // Getting selected blood group details
     let aPosBox = document.getElementById("aPos");
@@ -156,5 +154,6 @@ function validateRequest(hospitalId){
     }else{
         // Checks the availability and submits the form if eligible
         checkAvailability();
+       
     }
 }

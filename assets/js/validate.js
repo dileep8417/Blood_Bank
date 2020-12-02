@@ -1,5 +1,7 @@
 
 // Validating Receiver Registration Form
+// Exceptions are used to avoid getting errors when the HTML element is not found
+
 try{
      document.getElementById("receiver-register-btn").addEventListener("click",function(e){
          // Removing the default behaviour of the form submission for validating the data
@@ -48,7 +50,7 @@ try{
                msg = "Processing...";
           }
           window.scrollTo(500, 0);      // Scrolls current page to top for showing error
-          document.getElementById("err-msg").innerHTML  = msg;
+          document.getElementById("err-msg").innerHTML  = msg;   // Displaying the message to the users
        });
 }catch(Exception){}
 
@@ -96,7 +98,7 @@ try{
                msg = "Processing...";
           }
           window.scrollTo(500, 0);
-          document.getElementById("err-msg").innerHTML  = msg;
+          document.getElementById("err-msg").innerHTML  = msg;   // Displaying the message to the users
      });
 }catch(Exception){}
 

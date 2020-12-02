@@ -2,7 +2,7 @@
 
     /*
     
-        This module is to display the hospitals,bloood units,receivers count  
+        This module is to display the hospitals, bloood samples, recipients count on login page 
     
     */                                                                                           
                                                                                           
@@ -15,11 +15,11 @@
         <p class="count"><?php echo get_count($conn,"hospitals")?></p>   
     </div>
     <div class="frame">
-        <p class="title">Blood Units</p>
+        <p class="title">Blood Samples</p>
         <p class="count"><?php echo get_total_blood_units($conn);?></p>
     </div>
     <div class="frame">
         <p class="title">Recipients</p>
-        <p class="count"><?php echo get_count($conn,"receiver_details");?></p>
+        <p class="count"><?php echo get_all_requests_count($conn);?></p>
     </div>
 </div>
